@@ -1,0 +1,108 @@
+html,
+body {
+  height: 100vh;
+}
+body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: #fff;
+}
+aside {
+  background: rgba(80, 115, 245, 0.15);
+  position: relative;
+  overflow: hidden;
+  animation: asideEntrance 2s cubic-bezier(0.19, 1, 0.22, 1);
+}
+aside header {
+  padding: 20px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+}
+aside header img {
+  height: 30px;
+}
+aside .illustration {
+  position: absolute;
+  bottom: -20px;
+  right: -50px;
+  width: 90%;
+}
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+main form {
+  display: grid;
+  grid-gap: 15px;
+  width: 350px;
+  animation: upEntrance 1s cubic-bezier(0.19, 1, 0.22, 1);
+}
+main form h1 {
+  text-align: center;
+  font-size: 1.25em;
+  margin-bottom: 15px;
+}
+main form .input-field {
+  position: relative;
+}
+main form .input-field label {
+  position: absolute;
+  pointer-events: none;
+  left: 10px;
+  padding: 0px 5px;
+  top: -5px;
+  color: #909090;
+  background: #fff;
+  transition: 0.2s ease top;
+}
+main form .input-field input {
+  width: 100%;
+  border: 2px solid #ddd;
+  background: #fff;
+  padding: 8px 15px;
+  border-radius: 4px;
+  font-size: 1em;
+  font-family: 'Jost', sans-serif;
+}
+main form .input-field:focus-within label {
+  color: #5073f5;
+}
+main form .input-field:focus-within input {
+  outline: 0;
+  border-color: #5073f5;
+}
+main form input[type="submit"] {
+  justify-self: center;
+}
+main form .new-account-notice {
+  text-align: center;
+  font-size: 0.85em;
+  color: #909090;
+}
+main form .new-account-notice a {
+  text-decoration: none;
+  color: #5073f5;
+  font-weight: 500;
+}
+main form .new-account-notice a:hover {
+  text-decoration: underline;
+}
+@keyframes asideEntrance {
+  from {
+    transform: translateX(-100px);
+  }
+  to {
+    transform: translateX(0px);
+  }
+}
+@keyframes upEntrance {
+  from {
+    transform: translateY(50px);
+  }
+  to {
+    transform: translateY(0px);
+  }
+}
+/*# sourceMappingURL=login.css.map */

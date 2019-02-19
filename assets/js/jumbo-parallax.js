@@ -7,5 +7,5 @@ window.addEventListener('scroll', function(e) {
 updateParallax();
 
 function updateParallax() {
-    jumbotron.style.backgroundPositionY = (window.pageYOffset / 2) + "px";
+    jumbotron.style.backgroundPositionY = -150 + (window.pageYOffset / 2) + "px";
 }

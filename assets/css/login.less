@@ -1,0 +1,124 @@
+@import "vars";
+
+html, body {
+  height: 100vh;
+}
+body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: #fff;
+}
+aside {
+  background: @colorPrimaryLight15;
+  position: relative;
+  overflow: hidden;
+  animation: asideEntrance 2s cubic-bezier(0.19, 1, 0.22, 1);
+
+  & header {
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+
+    & img {
+      height: 30px;
+    }
+  }
+
+  & .illustration {
+    position: absolute;
+    bottom: -20px;
+    right: -50px;
+    width: 90%;
+  }
+}
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  & form {
+    display: grid;
+    grid-gap: 15px;
+    width: 350px;
+    animation: upEntrance 1s cubic-bezier(0.19, 1, 0.22, 1);
+
+    & h1 {
+      text-align: center;
+      font-size: 1.25em;
+      margin-bottom: 15px;
+    }
+
+    & .input-field {
+      position: relative;
+
+      & label {
+        position: absolute;
+        pointer-events: none;
+        left: 10px;
+        padding: 0px 5px;
+        top: -5px;
+        color: #909090;
+        background: #fff;
+        transition: 0.2s ease top;
+      }
+      & input {
+        width: 100%;
+        border: 2px solid #ddd;
+        background: #fff;
+        padding: 8px 15px;
+        border-radius: @borderRadius;
+        font-size: 1em;
+        font-family: 'Jost', sans-serif;
+      }
+
+      &:focus-within {
+        & label {
+          color: @colorPrimary;
+        }
+        & input {
+          outline: 0;
+          border-color: @colorPrimary;
+        }
+      }
+    }
+
+    & input[type="submit"] {
+      justify-self: center;
+    }
+
+    & .new-account-notice {
+      text-align: center;
+      font-size: 0.85em;
+      color: #909090;
+
+      & a {
+        text-decoration: none;
+        color: @colorPrimary;
+        font-weight: 500;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}
+
+@keyframes asideEntrance {
+  from {
+    transform: translateX(-100px);
+  }
+  to {
+    transform: translateX(0px);
+  }
+}
+
+@keyframes upEntrance {
+  from {
+    transform: translateY(50px);
+  }
+  to {
+    transform: translateY(0px);
+  }
+}

@@ -1,0 +1,132 @@
+@import "vars";
+
+header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  padding: 20px 0px;
+
+  & .grid-header {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+
+    & .logo {
+      height: 30px;
+    }
+  }
+}
+section.jumbotron {
+  background: url('../img/frontpage-cover.png') center -150px;
+  background-size: cover;
+  animation: jumboEntrance 2s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+
+  & .jumbo-content {
+    padding-top: 400px;
+    padding-bottom: 70px;
+    animation: jumboEntrance 2s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+    text-align: center;
+
+    & h1 {
+      color: #fff;
+      font-size: 3rem;
+      line-height: 1.15;
+      font-weight: bold;
+    }
+    & .jumbo-button {
+      color: #000;
+      background: #fff;
+      display: inline-block;
+      padding: 10px 30px;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      text-decoration: none;
+      border-radius: 3px;
+      margin-top: 15px;
+      transition: 0.2s ease all;
+
+      &:hover {
+        padding: 10px 35px;
+        letter-spacing: 0.15em;
+      }
+      &:active {
+        padding: 10px 25px;
+        letter-spacing: 0.05em;
+      }
+    }
+  }
+}
+main {
+  padding: 70px 0px;
+
+  & .box.featurette {
+    text-align: center;
+    display: grid;
+    overflow: hidden;
+    padding: 0px;
+    grid-template-columns: 1fr;
+    transition: 0.25s ease all;
+
+    & .illustration {
+      height: 250px;
+      background: @colorPrimaryLight;
+      display: flex;
+      justify-content: center;
+      padding: 40px;
+      align-items: center;
+
+      & img {
+        max-height: 90%;
+        max-width: 90%;
+      }
+    }
+
+    & .text {
+      padding: 40px;
+
+      & .icon {
+        background: @colorPrimary;
+        color: @colorPrimaryText;
+        width: 72px;
+        height: 72px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0 auto;
+        border-radius: 50%;
+
+        & i {
+          width: 34px;
+          height: 34px;
+          font-size: 34px;
+        }
+      }
+
+      & h1 {
+        font-size: 1.15em;
+        margin-top: 15px;
+      }
+
+      & p {
+        line-height: 1.5;
+        margin-top: 10px;
+      }
+    }
+
+    &:hover {
+      transform: translateY(-8px);
+      box-shadow: 0px 12px 24px rgba(0, 0, 0, 0.15);
+    }
+  }
+}
+
+@keyframes jumboEntrance {
+  from {
+    transform: translateY(-50px);
+  }
+  to {
+    transform: translateY(0px);
+  }
+}

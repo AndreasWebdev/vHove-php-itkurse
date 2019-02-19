@@ -1,0 +1,141 @@
+header {
+  background: #5073f5;
+  padding: 20px 0px 0px 0px;
+}
+header .grid-header {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+}
+header .grid-header .logo {
+  height: 30px;
+}
+header .grid-header .tabs {
+  margin-top: 15px;
+  display: flex;
+}
+header .grid-header .tabs a {
+  margin-right: 10px;
+  padding: 10px 15px;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  color: #fff;
+  background: transparent;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-gap: 10px;
+  align-items: center;
+  text-decoration: none;
+  transition: 0.2s ease background, 0.2s ease color;
+}
+header .grid-header .tabs a i {
+  font-size: 1.25em;
+}
+header .grid-header .tabs a span {
+  font-weight: 600;
+  font-size: 0.8em;
+  text-transform: uppercase;
+}
+header .grid-header .tabs a.active {
+  color: #5073f5;
+  background: #f1f1f1;
+}
+header .grid-header .tabs a:not(.active):hover {
+  background: rgba(0, 0, 0, 0.1);
+}
+header .grid-header .tabs a:not(.active):active {
+  background: rgba(0, 0, 0, 0.15);
+}
+main {
+  padding: 40px 0px;
+  display: grid;
+  grid-gap: 35px;
+}
+main .box-recommendation {
+  background: url('../img/banner_kurse.png') center;
+  background-size: cover;
+  color: #fff;
+  text-align: center;
+  padding: 60px 0px;
+  border-radius: 4px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
+  position: relative;
+}
+main .box-recommendation .recommendation-notification {
+  font-weight: 500;
+  font-size: 0.75em;
+  text-transform: uppercase;
+  padding: 6px 10px 2px;
+  border-radius: 4px;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  border: 2px solid #fff;
+}
+main .box-recommendation h1 {
+  font-size: 2.5em;
+  margin-bottom: 15px;
+  font-weight: 500;
+}
+main h1 {
+  font-size: 1.75em;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+main .courses-grid {
+  display: grid;
+  grid-gap: 15px;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+main .courses-grid .course {
+  background: #fff;
+  border-radius: 4px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
+  border: 2px solid #fff;
+  padding: 16px;
+  display: grid;
+  grid-gap: 10px;
+  grid-template-rows: auto auto 1fr;
+  transition: 0.2s ease transform, 0.2s ease box-shadow;
+}
+main .courses-grid .course .course-difficulty {
+  justify-self: left;
+  background: rgba(80, 115, 245, 0.15);
+  color: #5073f5;
+  padding: 5px 10px;
+  border-radius: 4px;
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+}
+main .courses-grid .course .course-difficulty span.icons {
+  letter-spacing: -0.15em;
+  font-size: 1.05em;
+}
+main .courses-grid .course .course-difficulty span.text {
+  font-weight: 500;
+  font-size: 0.9em;
+}
+main .courses-grid .course h1 {
+  font-size: 1.5em;
+  font-weight: 500;
+  margin-top: 10px;
+  margin-bottom: 0px;
+}
+main .courses-grid .course p {
+  line-height: 1.25em;
+}
+main .courses-grid .course:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+main .courses-grid .course:active {
+  transform: translateY(0px);
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
+}
+main .courses-grid .course:focus {
+  border-color: #5073f5;
+}
+/*# sourceMappingURL=userarea.css.map */

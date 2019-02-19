@@ -1,0 +1,155 @@
+@import "vars";
+
+header {
+  background: @colorPrimary;
+  padding: 20px 0px 0px 0px;
+
+  & .grid-header {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+
+    & .logo {
+      height: 30px;
+    }
+
+    & .tabs {
+      margin-top: 15px;
+      display: flex;
+
+      & a {
+        margin-right: 10px;
+        padding: 10px 15px;
+        border-top-left-radius: @borderRadius;
+        border-top-right-radius: @borderRadius;
+        color: @colorPrimaryText;
+        background: transparent;
+        display: grid;
+        grid-template-columns: auto 1fr;
+        grid-gap: 10px;
+        align-items: center;
+        text-decoration: none;
+        transition: 0.2s ease background, 0.2s ease color;
+
+        & i {
+          font-size: 1.25em;
+        }
+        & span {
+          font-weight: 600;
+          font-size: 0.8em;
+          text-transform: uppercase;
+        }
+        &.active {
+          color: @colorPrimary;
+          background: @colorBackground;
+        }
+        &:not(.active):hover {
+          background: rgba(0,0,0,0.1);
+        }
+        &:not(.active):active {
+          background: rgba(0,0,0,0.15);
+        }
+      }
+    }
+  }
+}
+main {
+  padding: 40px 0px;
+  display: grid;
+  grid-gap: 35px;
+
+  & .box-recommendation {
+    background: url('../img/banner_kurse.png') center;
+    background-size: cover;
+    color: @colorPrimaryText;
+    text-align: center;
+    padding: 60px 0px;
+    border-radius: @borderRadius;
+    box-shadow: @boxShadow;
+    position: relative;
+
+    & .recommendation-notification {
+      font-weight: 500;
+      font-size: 0.75em;
+      text-transform: uppercase;
+      padding: 6px 10px 2px;
+      border-radius: @borderRadius;
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      border: 2px solid @colorPrimaryText;
+    }
+
+    & h1 {
+      font-size: 2.5em;
+      margin-bottom: 15px;
+      font-weight: 500;
+    }
+  }
+
+  & h1 {
+    font-size: 1.75em;
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+  & .courses-grid {
+    display: grid;
+    grid-gap: 15px;
+    grid-template-columns: 1fr 1fr 1fr;
+
+    & .course {
+      background: #fff;
+      border-radius: @borderRadius;
+      box-shadow: @boxShadow;
+      border: 2px solid #fff;
+      padding: 16px;
+      display: grid;
+      grid-gap: 10px;
+      grid-template-rows: auto auto 1fr;
+      transition: 0.2s ease transform, 0.2s ease box-shadow;
+
+      & .course-difficulty {
+        justify-self: left;
+        background: @colorPrimaryLight15;
+        color: @colorPrimary;
+        padding: 5px 10px;
+        border-radius: @borderRadius;
+        display: grid;
+        grid-gap: 10px;
+        grid-template-columns: auto 1fr;
+        align-items: center;
+
+        & span.icons {
+          letter-spacing: -0.15em;
+          font-size: 1.05em;
+        }
+        & span.text {
+          font-weight: 500;
+          font-size: 0.9em;
+        }
+      }
+      & h1 {
+        font-size: 1.5em;
+        font-weight: 500;
+        margin-top: 10px;
+        margin-bottom: 0px;
+      }
+      & p {
+        line-height: 1.25em;
+      }
+
+      &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0px 8px 20px rgba(0,0,0,0.2);
+        cursor: pointer;
+      }
+      &:active {
+        transform: translateY(0px);
+        box-shadow: 0px 2px 4px rgba(0,0,0,0.3);
+      }
+      &:focus {
+        border-color: @colorPrimary;
+      }
+    }
+  }
+}
