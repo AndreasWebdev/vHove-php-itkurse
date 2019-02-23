@@ -47,8 +47,6 @@
     function logout() {
         global $db;
 
-        // Remove SecurityKey
-
         // Destroy Session
         session_destroy();
     }

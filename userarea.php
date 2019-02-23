@@ -20,6 +20,7 @@
             <link rel="stylesheet" href="assets/css/reset.css" />
             <link rel="stylesheet" href="assets/css/common.css" />
             <link rel="stylesheet" href="assets/css/userarea.css" />
+            <link rel="stylesheet" href="assets/css/coursedetail.css" />
         </head>
         <body>
             <header>
@@ -69,7 +70,7 @@
 
                                                 foreach($allCoursesFromCategory as $course) {
                                                     ?>
-                                                    <article class="course" tabindex="0">
+                                                    <article class="course" tabindex="0" data-course="<?=$course['id'];?>">
                                                         <div class="course-difficulty">
                                                             <?php
                                                                 switch($course['difficulty']) {
@@ -162,5 +163,36 @@
 
                 <a href="impressum.php">Impressum & Datenschutz</a>
             </footer>
+
+            <div class="modal-details">
+                <div class="grid-wrapper modal-details-content">
+
+                    <article class="course-details">
+                        <a href="javascript:closeModal();" class="button button-primary"><i class="mdi mdi-close"></i></a>
+                        <div class="course-difficulty">
+                            <span class="icons">
+                                <i class="mdi mdi-star"></i>
+                                <i class="mdi mdi-star-outline"></i>
+                                <i class="mdi mdi-star-outline"></i>
+                            </span>
+                            <span class="text">Anfängerkurs</span>
+                        </div>
+
+                        <h1 id="modalHolderTitle"></h1>
+                        <p id="modalHolderShortDescription"></p>
+                    </article>
+
+                    <div class="course-moredetails">
+                        <div class="box">
+                            <h3>Kursinformationen</h3>
+                            <p id="modalHolderLongDescription">In diesem Kurs lernst du die Grundlagen von XML und wie man XML in die <br/>Datenwiedergabe einbinden kann, um Arbeitsabläufe zu optimieren.</p>
+                            <h3>Informationen zur Schulungsstätte</h3>
+                            <p>IT-Dschungel<br />Entwicklungsgasse 10<br />45123 Gelsenkirchen<br /><br />Telefon: 0209-222222<br />E-Mail: info@it-dschungel.de<br />Web: www.it-dschungel.de</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <script src="assets/js/course-detail.js"></script>
         </body>
     </html>
