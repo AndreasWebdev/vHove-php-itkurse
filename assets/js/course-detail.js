@@ -118,6 +118,7 @@ function constructModal(courseData) {
     }
 }
 
+// Function to append one date item to the dates holder container
 function loadCourseDate(holderContainer, data, isAlreadyBooked, isBookedItem) {
     let courseDate = new Date(data.course_date);
 
@@ -172,6 +173,7 @@ function loadCourseDate(holderContainer, data, isAlreadyBooked, isBookedItem) {
     holderContainer.appendChild(newCourseDate);
 }
 
+// Function to change the selected date
 function changeDateSelection(dateToSelect) {
     let otherDates = document.querySelectorAll("#modalHolderDates .course-date");
     let modalConfirmButton = document.querySelector("#btnCourseConfirm");
@@ -190,6 +192,7 @@ function changeDateSelection(dateToSelect) {
     }
 }
 
+// Function to remove all selections of dates
 function changeDateSectionToNothing() {
     let allDates = document.querySelectorAll("#modalHolderDates .course-date");
     let modalConfirmButton = document.querySelector("#btnCourseConfirm");
@@ -201,11 +204,10 @@ function changeDateSectionToNothing() {
     modalConfirmButton.classList.add("button-disabled");
 }
 
+// Function to submit a cancellation of the booking to the api
 function submitDateCancellation(bookingID) {
     let modalConfirmButton = document.querySelector("#btnCourseConfirm");
     let modalHolderDates = document.querySelector("#modalHolderDates");
-
-    console.log("Cancel Booking #" + bookingID);
 
     // change notification text
     let modalNotification = document.querySelector(".box-coursedates .notification");
@@ -216,8 +218,18 @@ function submitDateCancellation(bookingID) {
     modalConfirmButton.classList.add("button-gone");
     modalHolderDates.parentNode.classList.add("action-done");
     modalHolderDates.classList.remove("interactable");
+
+    // Return command to api
+    fetch("api/cancelBooking.php?bookingID=" + bookingID)
+        .then(function(response) {
+            return response.json();
+        })
+        .then(function(apiResponse) {
+            console.log(apiResponse);
+        });
 }
 
+// Function to submit the selected date to the api
 function submitDateSelection() {
     let currentSelectedDate = document.querySelector("#modalHolderDates .course-date.active");
     let dateID = currentSelectedDate.getAttribute("data-date");
@@ -225,8 +237,6 @@ function submitDateSelection() {
 
     let modalConfirmButton = document.querySelector("#btnCourseConfirm");
     let modalHolderDates = document.querySelector("#modalHolderDates");
-
-    console.log("Subscribe to Date #" + dateID + " of Course #" + courseID);
 
     // change notification text
     let modalNotification = document.querySelector(".box-coursedates .notification");
@@ -236,4 +246,13 @@ function submitDateSelection() {
     modalConfirmButton.classList.add("button-gone");
     modalHolderDates.parentNode.classList.add("action-done");
     modalHolderDates.classList.remove("interactable");
+
+    // Return command to api
+    fetch("api/newBooking.php?courseID=" + courseID + "&dateID=" + dateID)
+        .then(function(response) {
+            return response.json();
+        })
+        .then(function(apiResponse) {
+            console.log(apiResponse);
+        });
 }
