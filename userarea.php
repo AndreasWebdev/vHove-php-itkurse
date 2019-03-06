@@ -169,7 +169,7 @@
 
                     <article class="course-details">
                         <a href="javascript:closeModal();" class="button button-primary"><i class="mdi mdi-close"></i></a>
-                        <div class="course-difficulty">
+                        <div class="course-difficulty" id="modalHolderDifficulty">
                             <span class="icons">
                                 <i class="mdi mdi-star"></i>
                                 <i class="mdi mdi-star-outline"></i>
@@ -188,6 +188,27 @@
                             <p id="modalHolderLongDescription">In diesem Kurs lernst du die Grundlagen von XML und wie man XML in die <br/>Datenwiedergabe einbinden kann, um Arbeitsabläufe zu optimieren.</p>
                             <h3>Informationen zur Schulungsstätte</h3>
                             <p>IT-Dschungel<br />Entwicklungsgasse 10<br />45123 Gelsenkirchen<br /><br />Telefon: 0209-222222<br />E-Mail: info@it-dschungel.de<br />Web: www.it-dschungel.de</p>
+                        </div>
+                        <div class="box box-coursedates">
+                            <h3>Termine</h3>
+                            <div class="course-dates interactable" id="modalHolderDates">
+                                <div class="course-date active">
+                                    <span>Sa</span>
+                                    <span>01.03.2019</span>
+                                </div>
+                                <div class="course-date">
+                                    <span>Sa</span>
+                                    <span>01.03.2019</span>
+                                </div>
+                                <div class="course-date">
+                                    <span>Sa</span>
+                                    <span>01.03.2019</span>
+                                </div>
+                            </div>
+
+                            <h3>Für diesen Kurs voranmelden</h3>
+                            <p class="notification">Klicke einen der Termine oben an, um dich für diesen Kurs vorzuanmelden.</p>
+                            <div class="button button-primary button-disabled" id="btnCourseConfirm">Kursanmeldung bestätigen</div>
                         </div>
                     </div>
                 </div>

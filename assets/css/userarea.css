@@ -138,4 +138,76 @@ main .courses-grid .course:active {
 main .courses-grid .course:focus {
   border-color: #5073f5;
 }
+.box.box-coursedates {
+  display: grid;
+  grid-template-rows: auto 100px auto auto auto;
+}
+.box.box-coursedates .course-dates {
+  display: grid;
+  grid-gap: 5px;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+.box.box-coursedates .course-dates .course-date {
+  background: #f4f4f4;
+  display: grid;
+  padding: 10px;
+  border: 3px solid transparent;
+  border-radius: 4px;
+  grid-template-rows: 1fr auto;
+  transition: 0.15s ease all;
+}
+.box.box-coursedates .course-dates .course-date span:nth-child(1) {
+  text-align: center;
+  font-weight: 400;
+  padding: 5px 0px 2px;
+  font-size: 3em;
+  transition: 0.15s ease all;
+}
+.box.box-coursedates .course-dates .course-date span:nth-child(2) {
+  font-weight: 600;
+  font-size: 0.8em;
+  padding: 5px 0px;
+  text-align: center;
+  transition: 0.15s ease all;
+}
+.box.box-coursedates .course-dates .course-date.active {
+  background: rgba(80, 115, 245, 0.06);
+  border-color: #5073f5;
+}
+.box.box-coursedates .course-dates .course-date.active span {
+  color: #5073f5;
+}
+.box.box-coursedates .course-dates.interactable .course-date:not(.active):hover {
+  background: rgba(80, 115, 245, 0.06);
+  border-color: #5073f5;
+  cursor: pointer;
+}
+.box.box-coursedates .course-dates.interactable .course-date:not(.active):hover span {
+  color: #5073f5;
+}
+.box.box-coursedates h3:nth-of-type(2) {
+  margin-top: 10px;
+}
+.box.box-coursedates .notification {
+  font-size: 0.8em;
+  display: block;
+  padding: 15px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  background: rgba(80, 115, 245, 0.06);
+}
+.box.box-coursedates .button {
+  text-align: center;
+}
+.box.box-coursedates.action-done {
+  grid-template-rows: auto 100px auto 1fr;
+}
+.box.box-coursedates.action-done .notification {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-weight: bold;
+}
 /*# sourceMappingURL=userarea.css.map */

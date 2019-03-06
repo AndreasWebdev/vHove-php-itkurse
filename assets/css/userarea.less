@@ -153,3 +153,91 @@ main {
     }
   }
 }
+.box {
+  &.box-coursedates {
+    display: grid;
+    grid-template-rows: auto 100px auto auto auto;
+
+    & .course-dates {
+      display: grid;
+      grid-gap: 5px;
+      grid-template-columns: 1fr 1fr 1fr;
+
+      & .course-date {
+        background: @colorLight;
+        display: grid;
+        padding: 10px;
+        border: 3px solid transparent;
+        border-radius: @borderRadius;
+        grid-template-rows: 1fr auto;
+        transition: 0.15s ease all;
+
+        & span:nth-child(1) {
+          text-align: center;
+          font-weight: 400;
+          padding: 5px 0px 2px;
+          font-size: 3em;
+          transition: 0.15s ease all;
+        }
+        & span:nth-child(2) {
+          font-weight: 600;
+          font-size: 0.8em;
+          padding: 5px 0px;
+          text-align: center;
+          transition: 0.15s ease all;
+        }
+
+        &.active {
+          background: @colorPrimaryLight;
+          border-color: @colorPrimary;
+
+          & span {
+            color: @colorPrimary;
+          }
+        }
+      }
+
+      &.interactable {
+        & .course-date {
+          &:not(.active):hover {
+            background: @colorPrimaryLight;
+            border-color: @colorPrimary;
+            cursor: pointer;
+
+            & span {
+              color: @colorPrimary;
+            }
+          }
+        }
+      }
+    }
+
+    & h3:nth-of-type(2) {
+      margin-top: 10px;
+    }
+
+    & .notification {
+      font-size: 0.8em;
+      display: block;
+      padding: 15px;
+      margin-bottom: 10px;
+      border-radius: @borderRadius;
+      background: @colorPrimaryLight;
+    }
+    & .button {
+      text-align: center;
+    }
+    &.action-done {
+      grid-template-rows: auto 100px auto 1fr;
+
+      & .notification {
+        margin: 0;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        text-align: center;
+        font-weight: bold;
+      }
+    }
+  }
+}
