@@ -12,6 +12,9 @@
         // Check if courseID & dateID parameter is set
         if ($_GET['courseID'] && $_GET['dateID']) {
             // Insert new Booking
+            $newBookingQuery = $db->prepare("INSERT INTO `bookedcourse` (`user`, `course`, `course_date`) VALUES (?, ?, ?);");
+            $newBookingQuery->bind_param("iii", $_SESSION['itd_userid'], $_GET['courseID'], $_GET['dateID']);
+            $newBookingQuery->execute();
 
             // Return response as JSON
             echo json_encode(["status" => [200, "Voranmeldung eingetragen"], "successful" => true]);

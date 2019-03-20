@@ -94,13 +94,14 @@ function constructModal(courseData) {
         });
     } else {
         // there is already a booking, disable interaction and show "remove booking" option
-        let bookedCourseID = courseData.data.booking.id;
+        let bookedID = courseData.data.booking.id;
+        let bookedCourseID = courseData.data.booking.course;
 
         modalConfirmButton.classList.remove("button-disabled");
         modalConfirmButton.innerText = "Kursanmeldung abbrechen";
         modalConfirmButton.addEventListener('click', function() {
-            submitDateCancellation(bookedCourseID);
-        })
+            submitDateCancellation(bookedID);
+        });
 
         // Reset containers
         modalHolderDates.classList.remove("interactable");

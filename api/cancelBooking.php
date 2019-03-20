@@ -12,6 +12,9 @@
         // Check if bookingID parameter is set
         if ($_GET['bookingID']) {
             // Remove Booking
+            $newBookingQuery = $db->prepare("DELETE FROM `bookedcourse` WHERE `user` = ? AND `id` = ?");
+            $newBookingQuery->bind_param("ii", $_SESSION['itd_userid'], $_GET['bookingID']);
+            $newBookingQuery->execute();
 
             // Return response as JSON
             echo json_encode(["status" => [200, "Voranmeldung gelöscht!"], "successful" => true]);
