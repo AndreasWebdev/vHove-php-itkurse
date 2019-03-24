@@ -131,25 +131,71 @@
                                 <a href="courses.php?allCourses" class="button">Alle Kurse anzeigen</a>
                             </div>
 
-                            <div class="box box-userarea">
+                            <!-- <div class="box box-userarea">
                                 USERAREA
-                            </div>
+                            </div> -->
 
                             <section>
                                 <h1>Deine Kurse</h1>
                                 <div class="courses-grid">
-                                    <article class="course">
-                                        Lorem Ipsum
+                                <?php
+                                $getBookedCoursesQuery = $db->query("SELECT * FROM bookedcourse WHERE user = ".$_SESSION['itd_userid']);
+                                $bookedCourses = $getBookedCoursesQuery->fetch_all(MYSQLI_ASSOC);
+                                $getBookedCoursesQuery->close();
+
+                                foreach($bookedCourses as $bookedCourse) {
+
+                                    $getCourseInfoQuery = $db->query("SELECT * FROM course WHERE id = ".$bookedCourse['course']);
+                                    $course = $getCourseInfoQuery->fetch_all(MYSQLI_ASSOC);
+                                    $getCourseInfoQuery->close();
+
+                                    $course = $course[0];
+
+                                    ?>
+                                    <article class="course" tabindex="0" data-course="<?=$course['id'];?>">
+                                        <div class="course-difficulty">
+                                            <?php
+                                            switch($course['difficulty']) {
+                                                case 1:
+                                                    ?>
+                                                    <span class="icons">
+                                                                <i class="mdi mdi-star"></i>
+                                                                <i class="mdi mdi-star-outline"></i>
+                                                                <i class="mdi mdi-star-outline"></i>
+                                                            </span>
+                                                    <span class="text">Anfängerkurs</span>
+                                                    <?php
+                                                    break;
+                                                case 2:
+                                                    ?>
+                                                    <span class="icons">
+                                                                <i class="mdi mdi-star"></i>
+                                                                <i class="mdi mdi-star"></i>
+                                                                <i class="mdi mdi-star-outline"></i>
+                                                            </span>
+                                                    <span class="text">Mittlere Schwierigkeit</span>
+                                                    <?php
+                                                    break;
+                                                case 3:
+                                                    ?>
+                                                    <span class="icons">
+                                                                <i class="mdi mdi-star"></i>
+                                                                <i class="mdi mdi-star"></i>
+                                                                <i class="mdi mdi-star"></i>
+                                                            </span>
+                                                    <span class="text">Fortgeschrittenenkurse</span>
+                                                    <?php
+                                                    break;
+                                            }
+                                            ?>
+                                        </div>
+
+                                        <h1><?=$course['title'];?></h1>
+                                        <p><?=$course['short_description'];?></p>
                                     </article>
-                                    <article class="course">
-                                        Lorem Ipsum
-                                    </article>
-                                    <article class="course">
-                                        Lorem Ipsum
-                                    </article>
-                                    <article class="course">
-                                        Lorem Ipsum
-                                    </article>
+                                    <?php
+                                }
+                                ?>
                                 </div>
                             </section>
                             <?php
