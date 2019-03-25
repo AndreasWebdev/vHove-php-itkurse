@@ -31,8 +31,8 @@
                                 <?php
                             } else {
                                 ?>
-                                    <a href="login.php" class="button button-transparent text-white">EINLOGGEN</a>
-                                    <a href="login.php" class="button">REGISTRIEREN</a>
+                                    <a href="login.php" class="button button-transparent text-white"><i class="mdi mdi-login-variant"></i> EINLOGGEN</a>
+                                    <a href="register.php" class="button"><i class="mdi mdi-account-plus"></i> REGISTRIEREN</a>
                                 <?php
                             }
                         ?>
@@ -85,7 +85,7 @@
             <footer>
                 <img src="assets/img/logo_black.svg" alt="it-{dschungel} Logo" />
 
-                <a href="">Impressum & Datenschutz</a>
+                <a href="legal.php">Impressum & Datenschutz</a>
             </footer>
 
             <script src="assets/js/jumbo-parallax.js"></script>

@@ -28,7 +28,7 @@
                     <a href="userarea.php?p=myCourses" tabindex="-1"><img src="assets/img/logo_white.svg" class="logo" alt="it-{dschungel} Logo" /></a>
 
                     <nav class="user-area" role="navigation">
-                        <a href="logout.php" class="button">Ausloggen</a>
+                        <a href="logout.php" class="button"><i class="mdi mdi-logout-variant"></i> Ausloggen</a>
                     </nav>
 
                     <nav class="tabs" role="navigation">
@@ -131,73 +131,172 @@
                                 <a href="userarea.php?p=allCourses" class="button">Alle Kurse anzeigen</a>
                             </div>
 
-                            <!-- <div class="box box-userarea">
-                                USERAREA
-                            </div> -->
+                            <div class="box box-userarea">
+                                <div class="userarea-info">
+                                    <h1><?=getUserData($_SESSION['itd_userid'], "username");?></h1>
+                                    <p><?=getUserData($_SESSION['itd_userid'], "email")?></p>
+                                </div>
+                                <div class="userarea-action">
+                                    <a href="userarea.php?p=profilesettings" class="button button-primary"><i class="mdi mdi-settings"></i> Profileinstellungen</a>
+                                </div>
+                            </div>
 
                             <section>
                                 <h1>Deine Kurse</h1>
-                                <div class="courses-grid">
                                 <?php
                                 $getBookedCoursesQuery = $db->query("SELECT * FROM bookedcourse WHERE user = ".$_SESSION['itd_userid']);
                                 $bookedCourses = $getBookedCoursesQuery->fetch_all(MYSQLI_ASSOC);
                                 $getBookedCoursesQuery->close();
 
-                                foreach($bookedCourses as $bookedCourse) {
-
-                                    $getCourseInfoQuery = $db->query("SELECT * FROM course WHERE id = ".$bookedCourse['course']);
-                                    $course = $getCourseInfoQuery->fetch_all(MYSQLI_ASSOC);
-                                    $getCourseInfoQuery->close();
-
-                                    $course = $course[0];
-
+                                if(empty($bookedCourses)) {
                                     ?>
-                                    <article class="course" tabindex="0" data-course="<?=$course['id'];?>" onkeyup="EnterClick(event)">
-                                        <div class="course-difficulty">
-                                            <?php
-                                            switch($course['difficulty']) {
-                                                case 1:
-                                                    ?>
-                                                    <span class="icons">
-                                                                <i class="mdi mdi-star"></i>
-                                                                <i class="mdi mdi-star-outline"></i>
-                                                                <i class="mdi mdi-star-outline"></i>
-                                                            </span>
-                                                    <span class="text">Anfängerkurs</span>
-                                                    <?php
-                                                    break;
-                                                case 2:
-                                                    ?>
-                                                    <span class="icons">
-                                                                <i class="mdi mdi-star"></i>
-                                                                <i class="mdi mdi-star"></i>
-                                                                <i class="mdi mdi-star-outline"></i>
-                                                            </span>
-                                                    <span class="text">Mittlere Schwierigkeit</span>
-                                                    <?php
-                                                    break;
-                                                case 3:
-                                                    ?>
-                                                    <span class="icons">
-                                                                <i class="mdi mdi-star"></i>
-                                                                <i class="mdi mdi-star"></i>
-                                                                <i class="mdi mdi-star"></i>
-                                                            </span>
-                                                    <span class="text">Fortgeschrittenenkurse</span>
-                                                    <?php
-                                                    break;
-                                            }
-                                            ?>
+                                        <div class="box">
+                                            <p>
+                                                Du hast dich für noch keinen Kurs eingetragen!
+                                            </p>
                                         </div>
+                                    <?php
+                                } else {
+                                    ?>
+                                    <div class="courses-grid">
+                                        <?php
+                                        foreach ($bookedCourses as $bookedCourse) {
 
-                                        <h1><?=$course['title'];?></h1>
-                                        <p><?=$course['short_description'];?></p>
-                                    </article>
+                                            $getCourseInfoQuery = $db->query("SELECT * FROM course WHERE id = " . $bookedCourse['course']);
+                                            $course = $getCourseInfoQuery->fetch_all(MYSQLI_ASSOC);
+                                            $getCourseInfoQuery->close();
+
+                                            $course = $course[0];
+
+                                            ?>
+                                            <article class="course" tabindex="0" data-course="<?= $course['id']; ?>"
+                                                     onkeyup="EnterClick(event)">
+                                                <div class="course-difficulty">
+                                                    <?php
+                                                    switch ($course['difficulty']) {
+                                                        case 1:
+                                                            ?>
+                                                            <span class="icons">
+                                                                    <i class="mdi mdi-star"></i>
+                                                                    <i class="mdi mdi-star-outline"></i>
+                                                                    <i class="mdi mdi-star-outline"></i>
+                                                                </span>
+                                                            <span class="text">Anfängerkurs</span>
+                                                            <?php
+                                                            break;
+                                                        case 2:
+                                                            ?>
+                                                            <span class="icons">
+                                                                    <i class="mdi mdi-star"></i>
+                                                                    <i class="mdi mdi-star"></i>
+                                                                    <i class="mdi mdi-star-outline"></i>
+                                                                </span>
+                                                            <span class="text">Mittlere Schwierigkeit</span>
+                                                            <?php
+                                                            break;
+                                                        case 3:
+                                                            ?>
+                                                            <span class="icons">
+                                                                    <i class="mdi mdi-star"></i>
+                                                                    <i class="mdi mdi-star"></i>
+                                                                    <i class="mdi mdi-star"></i>
+                                                                </span>
+                                                            <span class="text">Fortgeschrittenenkurse</span>
+                                                            <?php
+                                                            break;
+                                                    }
+                                                    ?>
+                                                </div>
+
+                                                <h1><?= $course['title']; ?></h1>
+                                                <p><?= $course['short_description']; ?></p>
+                                            </article>
+                                            <?php
+                                        }
+                                        ?>
+                                    </div>
                                     <?php
                                 }
                                 ?>
                                 </div>
                             </section>
+                            <?php
+                            break;
+                        case "profilesettings":
+                            ?>
+                                <section>
+                                    <h1>Profileinstellungen</h1>
+                                    <div class="box">
+                                        <form action="" method="POST">
+                                            <?php
+                                                if(!empty($_POST['change_submit'])) {
+                                                    if($_POST['change_forename'] != getUserData($_SESSION['itd_userid'], "forename") && !empty($_POST['change_forename'])) {
+                                                        // Change Forename
+                                                        try {
+                                                            if(changeUserForename($_SESSION['itd_userid'], $_SESSION['itd_seckey'], $_POST['change_forename'])) {
+                                                                echo "<div class='alert alert-success'>Vorname wurde geändert!</div>";
+                                                            }
+                                                        } catch (Exception $e) {
+                                                            echo "<div class='alert alert-error'>".$e->getMessage()."</div>";
+                                                        }
+                                                    }
+                                                    if($_POST['change_lastname'] != getUserData($_SESSION['itd_userid'], "lastname") && !empty($_POST['change_lastname'])) {
+                                                        // Change Lastname
+                                                        try {
+                                                            if(changeUserLastname($_SESSION['itd_userid'], $_SESSION['itd_seckey'], $_POST['change_lastname'])) {
+                                                                echo "<div class='alert alert-success'>Nachname wurde geändert!</div>";
+                                                            }
+                                                        } catch (Exception $e) {
+                                                            echo "<div class='alert alert-error'>".$e->getMessage()."</div>";
+                                                        }
+                                                    }
+                                                    if($_POST['change_email'] != getUserData($_SESSION['itd_userid'], "email") && !empty($_POST['change_email'])) {
+                                                        // Change email
+                                                        try {
+                                                            if(changeUserEmail($_SESSION['itd_userid'], $_SESSION['itd_seckey'], $_POST['change_email'])) {
+                                                                echo "<div class='alert alert-success'>E-Mail wurde geändert!</div>";
+                                                            }
+                                                        } catch (Exception $e) {
+                                                            echo "<div class='alert alert-error'>".$e->getMessage()."</div>";
+                                                        }
+                                                    }
+                                                    if(!empty($_POST['change_currentpassword'])) {
+                                                        // Change password
+                                                        try {
+                                                            if (changeUserPassword($_SESSION['itd_userid'], $_SESSION['itd_seckey'], $_POST['change_currentpassword'], $_POST['change_newpassword'])) {
+                                                                echo "<div class='alert alert-success'>Passwort wurde geändert!</div>";
+                                                            }
+                                                        } catch (Exception $e) {
+                                                            echo "<div class='alert alert-error'>".$e->getMessage()."</div>";
+                                                        }
+                                                    }
+                                                }
+                                            ?>
+
+                                            <div class="input-field">
+                                                <label>Vorname</label>
+                                                <input type="text" name="change_forename" value="<?=getUserData($_SESSION['itd_userid'], "forename")?>" />
+                                            </div>
+                                            <div class="input-field">
+                                                <label>Nachname</label>
+                                                <input type="text" name="change_lastname" value="<?=getUserData($_SESSION['itd_userid'], "lastname")?>" />
+                                            </div>
+                                            <div class="input-field">
+                                                <label>E-Mail Adresse</label>
+                                                <input type="email" name="change_email" value="<?=getUserData($_SESSION['itd_userid'], "email")?>" />
+                                            </div>
+                                            <div class="input-field">
+                                                <label>Aktuelles Passwort</label>
+                                                <input type="password" name="change_currentpassword" placeholder="Leer lassen, um nicht zu ändern" />
+                                            </div>
+                                            <div class="input-field">
+                                                <label>Neues Passwort</label>
+                                                <input type="password" name="change_newpassword" placeholder="Leer lassen, um nicht zu ändern" />
+                                            </div>
+                                            <input type="submit" name="change_submit" class="button button-primary" value="Ändern" />
+                                        </form>
+                                    </div>
+                                </section>
                             <?php
                             break;
                     }
@@ -207,14 +306,14 @@
             <footer>
                 <img src="assets/img/logo_black.svg" alt="it-{dschungel} Logo" />
 
-                <a href="impressum.php">Impressum & Datenschutz</a>
+                <a href="legal.php">Impressum & Datenschutz</a>
             </footer>
 
             <div class="modal-details" role="dialog" aria-labelledby="modalHolderTitle" aria-describedby="modalHolderShortDescription">
                 <div class="grid-wrapper modal-details-content">
 
                     <article class="course-details">
-                        <a href="javascript:closeModal();" class="button button-primary"><i class="mdi mdi-close"></i></a>
+                        <a href="javascript:closeModal();" class="button button-primary"><i class="mdi mdi-close mdi-icononly"></i></a>
                         <div class="course-difficulty" id="modalHolderDifficulty">
                             <span class="icons">
                                 <i class="mdi mdi-star"></i>

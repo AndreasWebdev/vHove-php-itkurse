@@ -26,7 +26,7 @@
                 <header>
                     <img src="assets/img/logo_rgb.svg" alt="it{dschungel} Logo" />
 
-                    <a href="index.php" role="doc-backlink" class="button">Zurück</a>
+                    <a href="index.php" role="doc-backlink" class="button"><i class="mdi mdi-arrow-left"></i> Zurück</a>
                 </header>
 
                 <img src="assets/img/illustration_developer.svg" role="presentation" class="illustration" alt="Illustration eines Mannes an einem Computer" />

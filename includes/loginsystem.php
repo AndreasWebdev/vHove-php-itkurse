@@ -1,10 +1,15 @@
 <?php
-    function isLoggedIn() {
+    function isLoggedIn($userid = null, $seckey = null) {
         global $db;
+
+        if($userid == null || $seckey == null) {
+            $userid = $_SESSION['itd_userid'];
+            $seckey = $_SESSION['itd_seckey'];
+        }
 
         // Get User from DB
         $existingUserQuery = $db->prepare("SELECT COUNT(*) FROM user WHERE ID = ? AND security_key = ?");
-        $existingUserQuery->bind_param("is", $_SESSION['itd_userid'], $_SESSION['itd_seckey']);
+        $existingUserQuery->bind_param("is", $userid, $seckey);
         $existingUserQuery->execute();
         $existingUserResult = $existingUserQuery->get_result()->fetch_assoc();
 
@@ -78,5 +83,93 @@
 
     function hashPassword($password) {
         return sha1("ITD".$password);
+    }
+
+    function getUserData($userID, $userData, $unsafemode = false) {
+        global $db;
+
+        // Security Measures, make it overrideable for internal functions
+        if(!$unsafemode) {
+            if ($userData == "password" || $userData == "security_key") {
+                return null;
+            }
+        }
+
+        // Get user data from DB
+        $userDataQuery = $db->prepare("SELECT * FROM user WHERE ID = ?");
+        $userDataQuery->bind_param("i", $userID);
+        $userDataQuery->execute();
+        $userDataResults = $userDataQuery->get_result()->fetch_assoc();
+
+        return $userDataResults[$userData];
+    }
+
+    function changeUserPassword($userID, $security_key, $old_password, $new_password) {
+        global $db;
+
+        // Check if User is allowed to change password
+        if(!isLoggedIn($userID, $security_key)) {
+            throw new Exception("Deine Login-Session ist fehlerhaft! (UserID oder SecurityKey stimmen nicht)");
+        }
+
+        // Get old password and check it against user data
+        if(getUserData($userID, "password", true) != hashPassword($old_password)) {
+            throw new Exception("Das eingegebene Password war falsch");
+        }
+
+        // Change password to new password
+        $userDataQuery = $db->prepare("UPDATE `user` SET `password` = ? WHERE `id` = ?");
+        $userDataQuery->bind_param("si", hashPassword($new_password), $userID);
+        $userDataQuery->execute();
+
+        return $userDataQuery;
+    }
+
+    function changeUserEmail($userID, $security_key, $new_email) {
+        global $db;
+
+        // Check if User is allowed to change email
+        if(!isLoggedIn($userID, $security_key)) {
+            throw new Exception("Deine Login-Session ist fehlerhaft! (UserID oder SecurityKey stimmen nicht)");
+        }
+
+        // Change email to new email
+        $userDataQuery = $db->prepare("UPDATE `user` SET `email` = ? WHERE `id` = ?");
+        $userDataQuery->bind_param("si", $new_email, $userID);
+        $userDataQuery->execute();
+
+        return $userDataQuery;
+    }
+
+    function changeUserForename($userID, $security_key, $new_forename) {
+        global $db;
+
+        // Check if User is allowed to change email
+        if(!isLoggedIn($userID, $security_key)) {
+            throw new Exception("Deine Login-Session ist fehlerhaft! (UserID oder SecurityKey stimmen nicht)");
+        }
+
+        // Change email to new email
+        $userDataQuery = $db->prepare("UPDATE `user` SET `forename` = ? WHERE `id` = ?");
+        $userDataQuery->bind_param("si", $new_forename, $userID);
+        $userDataQuery->execute();
+
+        return $userDataQuery;
+    }
+
+    function changeUserLastname($userID, $security_key, $new_lastname) {
+        global $db;
+
+        // Check if User is allowed to change email
+        if(!isLoggedIn($userID, $security_key)) {
+            throw new Exception("Deine Login-Session ist fehlerhaft! (UserID oder SecurityKey stimmen nicht)");
+        }
+
+        // Change email to new email
+        $userDataQuery = $db->prepare("UPDATE `user` SET `lastname` = ? WHERE `id` = ?");
+        $userDataQuery->bind_param("si", $new_lastname, $userID);
+        $userDataQuery->execute();
+
+        return $userDataQuery;
     }
 ?>

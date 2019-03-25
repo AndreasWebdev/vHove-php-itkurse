@@ -138,6 +138,90 @@ main .courses-grid .course:active {
 main .courses-grid .course:focus {
   border-color: #5073f5;
 }
+main form {
+  display: grid;
+  grid-gap: 15px;
+  max-width: 400px;
+  margin: 10px auto;
+  animation: upEntrance 1s cubic-bezier(0.19, 1, 0.22, 1);
+}
+main form h1 {
+  text-align: center;
+  font-size: 1.25em;
+  margin-bottom: 15px;
+}
+main form .alert {
+  padding: 15px 20px;
+  border-radius: 4px;
+  margin-bottom: 5px;
+  border: 2px solid;
+  text-align: center;
+  font-size: 0.85em;
+}
+main form .alert.alert-success {
+  background: rgba(80, 115, 245, 0.15);
+  border-color: #5073f5;
+}
+main form .alert.alert-error {
+  background: rgba(255, 109, 68, 0.15);
+  border-color: #ff6d44;
+}
+main form .input-field {
+  position: relative;
+}
+main form .input-field label {
+  position: absolute;
+  pointer-events: none;
+  left: 10px;
+  padding: 0px 5px;
+  top: -5px;
+  color: #909090;
+  background: #fff;
+}
+main form .input-field input {
+  width: 100%;
+  border: 2px solid #ddd;
+  background: #fff;
+  padding: 8px 15px;
+  border-radius: 4px;
+  font-size: 1em;
+  font-family: 'Jost', sans-serif;
+}
+main form .input-field input::placeholder {
+  opacity: 0.5;
+}
+main form .input-field:focus-within label {
+  color: #5073f5;
+}
+main form .input-field:focus-within input {
+  outline: 0;
+  border-color: #5073f5;
+}
+main form input[type="submit"] {
+  justify-self: center;
+}
+main form .new-account-notice {
+  text-align: center;
+  font-size: 0.85em;
+  color: #909090;
+}
+main form .new-account-notice a {
+  text-decoration: none;
+  color: #5073f5;
+  font-weight: 500;
+}
+main form .new-account-notice a:hover {
+  text-decoration: underline;
+}
+.box.box-userarea {
+  display: grid;
+  grid-template-columns: 1fr auto;
+}
+.box.box-userarea .userarea-action {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
 .box.box-coursedates {
   display: grid;
   grid-template-rows: auto 100px auto auto auto;
