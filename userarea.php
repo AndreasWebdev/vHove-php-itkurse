@@ -235,7 +235,7 @@
                                                     if($_POST['change_forename'] != getUserData($_SESSION['itd_userid'], "forename") && !empty($_POST['change_forename'])) {
                                                         // Change Forename
                                                         try {
-                                                            if(changeUserForename($_SESSION['itd_userid'], $_SESSION['itd_seckey'], $_POST['change_forename'])) {
+                                                            if(changeUserData($_SESSION['itd_userid'], $_SESSION['itd_seckey'], "forename", $_POST['change_forename'])) {
                                                                 echo "<div class='alert alert-success'>Vorname wurde geändert!</div>";
                                                             }
                                                         } catch (Exception $e) {
@@ -245,17 +245,48 @@
                                                     if($_POST['change_lastname'] != getUserData($_SESSION['itd_userid'], "lastname") && !empty($_POST['change_lastname'])) {
                                                         // Change Lastname
                                                         try {
-                                                            if(changeUserLastname($_SESSION['itd_userid'], $_SESSION['itd_seckey'], $_POST['change_lastname'])) {
+                                                            if(changeUserData($_SESSION['itd_userid'], $_SESSION['itd_seckey'], "lastname", $_POST['change_lastname'])) {
                                                                 echo "<div class='alert alert-success'>Nachname wurde geändert!</div>";
                                                             }
                                                         } catch (Exception $e) {
                                                             echo "<div class='alert alert-error'>".$e->getMessage()."</div>";
                                                         }
                                                     }
+                                                    if($_POST['change_adress'] != getUserData($_SESSION['itd_userid'], "adress") && !empty($_POST['change_adress'])) {
+                                                        // Change Adress
+                                                        try {
+                                                            if(changeUserData($_SESSION['itd_userid'], $_SESSION['itd_seckey'], "adress", $_POST['change_adress'])) {
+                                                                echo "<div class='alert alert-success'>Adresse wurde geändert!</div>";
+                                                            }
+                                                        } catch (Exception $e) {
+                                                            echo "<div class='alert alert-error'>".$e->getMessage()."</div>";
+                                                        }
+                                                    }
+                                                    if($_POST['change_zip'] != getUserData($_SESSION['itd_userid'], "zip") && !empty($_POST['change_zip'])) {
+                                                        // Change ZIP
+                                                        try {
+                                                            if(changeUserData($_SESSION['itd_userid'], $_SESSION['itd_seckey'], "zip", $_POST['change_zip'])) {
+                                                                echo "<div class='alert alert-success'>PLZ wurde geändert!</div>";
+                                                            }
+                                                        } catch (Exception $e) {
+                                                            echo "<div class='alert alert-error'>".$e->getMessage()."</div>";
+                                                        }
+                                                    }
+                                                    if($_POST['change_city'] != getUserData($_SESSION['itd_userid'], "city") && !empty($_POST['change_city'])) {
+                                                        // Change City
+                                                        try {
+                                                            if(changeUserData($_SESSION['itd_userid'], $_SESSION['itd_seckey'], "city", $_POST['change_city'])) {
+                                                                echo "<div class='alert alert-success'>Stadt wurde geändert!</div>";
+                                                            }
+                                                        } catch (Exception $e) {
+                                                            echo "<div class='alert alert-error'>".$e->getMessage()."</div>";
+                                                        }
+                                                    }
+
                                                     if($_POST['change_email'] != getUserData($_SESSION['itd_userid'], "email") && !empty($_POST['change_email'])) {
                                                         // Change email
                                                         try {
-                                                            if(changeUserEmail($_SESSION['itd_userid'], $_SESSION['itd_seckey'], $_POST['change_email'])) {
+                                                            if(changeUserData($_SESSION['itd_userid'], $_SESSION['itd_seckey'], "email", $_POST['change_email'])) {
                                                                 echo "<div class='alert alert-success'>E-Mail wurde geändert!</div>";
                                                             }
                                                         } catch (Exception $e) {
@@ -283,6 +314,20 @@
                                                 <label>Nachname</label>
                                                 <input type="text" name="change_lastname" value="<?=getUserData($_SESSION['itd_userid'], "lastname")?>" />
                                             </div>
+                                            <div class="input-field">
+                                                <label>Adresse</label>
+                                                <input type="text" name="change_adress" value="<?=getUserData($_SESSION['itd_userid'], "adress")?>" />
+                                            </div>
+                                            <div class="input-field">
+                                                <label>PLZ</label>
+                                                <input type="text" name="change_zip" value="<?=getUserData($_SESSION['itd_userid'], "zip")?>" />
+                                            </div>
+                                            <div class="input-field">
+                                                <label>Stadt</label>
+                                                <input type="text" name="change_city" value="<?=getUserData($_SESSION['itd_userid'], "city")?>" />
+                                            </div>
+
+                                            <br /><br />
                                             <div class="input-field">
                                                 <label>E-Mail Adresse</label>
                                                 <input type="email" name="change_email" value="<?=getUserData($_SESSION['itd_userid'], "email")?>" />

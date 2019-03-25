@@ -95,7 +95,7 @@
         // Security Measures, make it overrideable for internal functions
         if(!$unsafemode) {
             if ($userData == "password" || $userData == "security_key") {
-                return null;
+                throw new Exception("Access Violation: Tried to change Password/SecKey in Safemode!");
             }
         }
 
@@ -129,7 +129,7 @@
         return $userDataQuery;
     }
 
-    function changeUserEmail($userID, $security_key, $new_email) {
+    function changeUserData($userID, $security_key, $field, $data, $unsafemode = false) {
         global $db;
 
         // Check if User is allowed to change email
@@ -137,41 +137,38 @@
             throw new Exception("Deine Login-Session ist fehlerhaft! (UserID oder SecurityKey stimmen nicht)");
         }
 
-        // Change email to new email
-        $userDataQuery = $db->prepare("UPDATE `user` SET `email` = ? WHERE `id` = ?");
-        $userDataQuery->bind_param("si", $new_email, $userID);
-        $userDataQuery->execute();
-
-        return $userDataQuery;
-    }
-
-    function changeUserForename($userID, $security_key, $new_forename) {
-        global $db;
-
-        // Check if User is allowed to change email
-        if(!isLoggedIn($userID, $security_key)) {
-            throw new Exception("Deine Login-Session ist fehlerhaft! (UserID oder SecurityKey stimmen nicht)");
+        // Security Measures, make it overrideable for internal functions
+        if(!$unsafemode) {
+            if ($field == "password" || $field == "security_key") {
+                throw new Exception("Access Violation: Tried to change Password/SecKey in Safemode!");
+            }
         }
 
-        // Change email to new email
-        $userDataQuery = $db->prepare("UPDATE `user` SET `forename` = ? WHERE `id` = ?");
-        $userDataQuery->bind_param("si", $new_forename, $userID);
-        $userDataQuery->execute();
-
-        return $userDataQuery;
-    }
-
-    function changeUserLastname($userID, $security_key, $new_lastname) {
-        global $db;
-
-        // Check if User is allowed to change email
-        if(!isLoggedIn($userID, $security_key)) {
-            throw new Exception("Deine Login-Session ist fehlerhaft! (UserID oder SecurityKey stimmen nicht)");
+        // Get correct Query
+        $userDataQuery = null;
+        switch($field) {
+            case "forename":
+                $userDataQuery = $db->prepare("UPDATE `user` SET `forename` = ? WHERE `id` = ?");
+                break;
+            case "lastname":
+                $userDataQuery = $db->prepare("UPDATE `user` SET `lastname` = ? WHERE `id` = ?");
+                break;
+            case "adress":
+                $userDataQuery = $db->prepare("UPDATE `user` SET `adress` = ? WHERE `id` = ?");
+                break;
+            case "zip":
+                $userDataQuery = $db->prepare("UPDATE `user` SET `zip` = ? WHERE `id` = ?");
+                break;
+            case "city":
+                $userDataQuery = $db->prepare("UPDATE `user` SET `city` = ? WHERE `id` = ?");
+                break;
+            case "email":
+                $userDataQuery = $db->prepare("UPDATE `user` SET `email` = ? WHERE `id` = ?");
+                break;
         }
 
-        // Change email to new email
-        $userDataQuery = $db->prepare("UPDATE `user` SET `lastname` = ? WHERE `id` = ?");
-        $userDataQuery->bind_param("si", $new_lastname, $userID);
+        // Change data
+        $userDataQuery->bind_param("si", $data,$userID);
         $userDataQuery->execute();
 
         return $userDataQuery;
