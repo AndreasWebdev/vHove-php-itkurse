@@ -135,7 +135,7 @@
 
                             <div class="box box-userarea">
                                 <div class="userarea-info">
-                                    <h1><?=getUserData($_SESSION['itd_userid'], "username");?></h1>
+                                    <h1><?=getUserData($_SESSION['itd_userid'], "forename");?> <?=getUserData($_SESSION['itd_userid'], "lastname");?></h1>
                                     <p><?=getUserData($_SESSION['itd_userid'], "email")?></p>
                                 </div>
                                 <div class="userarea-action">
