@@ -76,7 +76,7 @@
         $existingUserQuery->close();
 
         // Register User
-        $newUserQuery = $db->prepare("INSERT INTO user VALUES(NULL, ?, ?, ?, ?, ?, NULL)");
+        $newUserQuery = $db->prepare("INSERT INTO user VALUES(NULL, ?, ?, ?, ?, ?, NULL, NULL, NULL, NULL)");
         $newUserQuery->bind_param("sssss", $username, hashPassword($password), $email, $forename, $lastname);
         $newUserQuery->execute();
         $newUserQuery->close();
@@ -168,7 +168,7 @@
         }
 
         // Change data
-        $userDataQuery->bind_param("si", $data,$userID);
+        $userDataQuery->bind_param("si", $data, $userID);
         $userDataQuery->execute();
 
         return $userDataQuery;

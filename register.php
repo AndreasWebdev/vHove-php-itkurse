@@ -43,7 +43,7 @@
                             try {
                                 register($_POST['register_username'], $_POST['register_password'], $_POST['register_email'], $_POST['register_forename'], $_POST['register_lastname']);
                             } catch(Exception $ex) {
-                                echo $ex;
+                                echo $ex->getMessage();
                             }
                         }
 

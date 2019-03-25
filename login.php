@@ -42,7 +42,7 @@
                             try {
                                 login($_POST['login_username'], $_POST['login_password']);
                             } catch(Exception $ex) {
-                                echo $ex;
+                                echo $ex->getMessage();
                             }
                         }
                     ?>
