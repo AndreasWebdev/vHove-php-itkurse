@@ -87,6 +87,7 @@ main {
     }
   }
 
+
   & h1 {
     font-size: 1.75em;
     font-weight: 600;
@@ -244,6 +245,11 @@ main {
     display: grid;
     grid-template-columns: 1fr auto;
 
+    & .userarea-info {
+      h1 {
+        margin-bottom: 5px;
+      }
+    }
     & .userarea-action {
       display: flex;
       justify-content: flex-end;
@@ -336,6 +342,62 @@ main {
         align-items:center;
         text-align: center;
         font-weight: bold;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  header {
+    padding: 0;
+
+    & .grid-header {
+      padding: 25px 25px 0px;
+
+      & .tabs {
+        grid-column: 1 / span 2;
+      }
+    }
+  }
+  main {
+    & .box-recommendation {
+      padding: 50px 0px 20px;
+
+      & h1 {
+        font-size: 2em;
+      }
+    }
+    & .box.box-userarea {
+      grid-template-columns: 1fr;
+      grid-gap: 15px;
+
+      & .userarea-action {
+        justify-content: center;
+      }
+    }
+    & .courses-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  & .modal-details {
+    padding: 0 !important;
+    background: #fff !important;
+
+    & .course-details {
+      border-radius: 0px !important;
+    }
+    & .box {
+      box-shadow: none !important;
+      border-bottom: 1px solid #ddd;
+      border-radius: 0px !important;
+    }
+
+    & .modal-details-content {
+      padding: 0px;
+
+      & .course-moredetails {
+        grid-template-columns: 1fr !important;
+        grid-gap: 0px !important;
       }
     }
   }

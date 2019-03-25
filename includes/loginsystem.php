@@ -3,6 +3,10 @@
         global $db;
 
         if($userid == null || $seckey == null) {
+            if(!isset($_SESSION['itd_userid']) || !isset($_SESSION['itd_seckey'])) {
+                return false;
+            }
+
             $userid = $_SESSION['itd_userid'];
             $seckey = $_SESSION['itd_seckey'];
         }

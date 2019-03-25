@@ -12,7 +12,9 @@
     <html>
         <head>
             <meta charset="utf-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
             <title>it-{dschungel}</title>
+            <link rel="shortcut icon" href="assets/img/favicon.png" />
 
             <!-- Stylesheets -->
             <link rel="stylesheet" href="https://cdn.materialdesignicons.com/3.4.93/css/materialdesignicons.min.css" />

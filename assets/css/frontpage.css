@@ -116,4 +116,31 @@ main .box.featurette:hover {
     transform: translateY(0px);
   }
 }
+@media screen and (max-width: 1200px) {
+  header {
+    padding: 10px;
+  }
+  header .grid-wrapper {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    padding: 0;
+  }
+  header .grid-wrapper nav {
+    grid-row: 1;
+    margin-bottom: 15px;
+  }
+  section.jumbotron {
+    background: url('../img/frontpage-cover.png') center -150px;
+    background-size: 200%;
+  }
+  section.jumbotron .jumbo-content {
+    padding-top: 200px;
+  }
+  section.jumbotron .jumbo-content h1 {
+    font-size: 2em;
+  }
+  main {
+    padding: 25px 0px;
+  }
+}
 /*# sourceMappingURL=frontpage.css.map */

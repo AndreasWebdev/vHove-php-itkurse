@@ -18,6 +18,8 @@ aside header {
   display: grid;
   grid-template-columns: 1fr auto;
   align-items: center;
+  position: relative;
+  z-index: 100;
 }
 aside header img {
   height: 30px;
@@ -102,6 +104,18 @@ main form .new-account-notice a:hover {
   }
   to {
     transform: translateY(0px);
+  }
+}
+@media screen and (max-width: 1200px) {
+  body {
+    grid-template-columns: 1fr;
+    grid-template-rows: 280px 1fr;
+  }
+  aside {
+    animation: none;
+  }
+  main {
+    padding: 25px;
   }
 }
 /*# sourceMappingURL=login.css.map */

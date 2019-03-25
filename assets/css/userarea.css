@@ -217,6 +217,9 @@ main form .new-account-notice a:hover {
   display: grid;
   grid-template-columns: 1fr auto;
 }
+.box.box-userarea .userarea-info h1 {
+  margin-bottom: 5px;
+}
 .box.box-userarea .userarea-action {
   display: flex;
   justify-content: flex-end;
@@ -296,5 +299,51 @@ main form .new-account-notice a:hover {
   align-items: center;
   text-align: center;
   font-weight: bold;
+}
+@media screen and (max-width: 1200px) {
+  header {
+    padding: 0;
+  }
+  header .grid-header {
+    padding: 25px 25px 0px;
+  }
+  header .grid-header .tabs {
+    grid-column: 1 / span 2;
+  }
+  main .box-recommendation {
+    padding: 50px 0px 20px;
+  }
+  main .box-recommendation h1 {
+    font-size: 2em;
+  }
+  main .box.box-userarea {
+    grid-template-columns: 1fr;
+    grid-gap: 15px;
+  }
+  main .box.box-userarea .userarea-action {
+    justify-content: center;
+  }
+  main .courses-grid {
+    grid-template-columns: 1fr;
+  }
+  .modal-details {
+    padding: 0 !important;
+    background: #fff !important;
+  }
+  .modal-details .course-details {
+    border-radius: 0px !important;
+  }
+  .modal-details .box {
+    box-shadow: none !important;
+    border-bottom: 1px solid #ddd;
+    border-radius: 0px !important;
+  }
+  .modal-details .modal-details-content {
+    padding: 0px;
+  }
+  .modal-details .modal-details-content .course-moredetails {
+    grid-template-columns: 1fr !important;
+    grid-gap: 0px !important;
+  }
 }
 /*# sourceMappingURL=userarea.css.map */
