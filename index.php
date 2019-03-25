@@ -20,9 +20,9 @@
         <body>
             <header>
                 <div class="grid-wrapper grid-header">
-                    <a href="index.php"><img src="assets/img/logo_white.svg" class="logo" alt="it-{dschungel} Logo" /></a>
+                    <a href="index.php" tabindex="-1"><img src="assets/img/logo_white.svg" class="logo" alt="it-{dschungel} Logo" /></a>
 
-                    <nav class="user-area">
+                    <nav class="user-area" role="navigation">
                         <?php
                             if(isLoggedIn()) {
                                 ?>
@@ -40,14 +40,14 @@
                 </div>
             </header>
 
-            <section class="jumbotron">
+            <section class="jumbotron" role="banner">
                 <div class="grid-wrapper jumbo-content">
                     <h1>Spielend einfach HTML,<br />PHP und C++ lernen!</h1>
                     <a href="userarea.php?p=allCourses" class="jumbo-button">ZU DEN KURSEN</a>
                 </div>
             </section>
 
-            <main>
+            <main role="main">
                 <section class="grid-wrapper grid-features">
                     <div class="box featurette">
                         <div class="illustration">
@@ -89,5 +89,6 @@
             </footer>
 
             <script src="assets/js/jumbo-parallax.js"></script>
+            <script src="assets/js/enter-click.js"></script>
         </body>
     </html>

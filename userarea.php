@@ -25,18 +25,18 @@
         <body>
             <header>
                 <div class="grid-wrapper grid-header">
-                    <a href="userarea.php?p=myCourses"><img src="assets/img/logo_white.svg" class="logo" alt="it-{dschungel} Logo" /></a>
+                    <a href="userarea.php?p=myCourses" tabindex="-1"><img src="assets/img/logo_white.svg" class="logo" alt="it-{dschungel} Logo" /></a>
 
-                    <nav class="user-area">
+                    <nav class="user-area" role="navigation">
                         <a href="logout.php" class="button">Ausloggen</a>
                     </nav>
 
-                    <nav class="tabs">
-                        <a href="userarea.php?p=myCourses" <?php if(!isset($_GET['p']) || $_GET['p'] == "myCourses") echo 'class="active"'; ?>>
+                    <nav class="tabs" role="navigation">
+                        <a href="userarea.php?p=myCourses" <?php if(!isset($_GET['p']) || $_GET['p'] == "myCourses") echo 'class="active"'; ?> role="tab">
                             <i class="mdi mdi-school"></i>
                             <span>Meine Kurse</span>
                         </a>
-                        <a href="userarea.php?p=allCourses" <?php if(isset($_GET['p']) && $_GET['p'] == "allCourses") echo 'class="active"'; ?>>
+                        <a href="userarea.php?p=allCourses" <?php if(isset($_GET['p']) && $_GET['p'] == "allCourses") echo 'class="active"'; ?> role="tab">
                             <i class="mdi mdi-google-classroom"></i>
                             <span>Alle Kurse</span>
                         </a>
@@ -44,7 +44,7 @@
                 </div>
             </header>
 
-            <main class="grid-wrapper">
+            <main class="grid-wrapper" role="main">
                 <?php
                     if(isset($_GET['p'])) {
                         $page = $_GET['p'];
@@ -70,7 +70,7 @@
 
                                                 foreach($allCoursesFromCategory as $course) {
                                                     ?>
-                                                    <article class="course" tabindex="0" data-course="<?=$course['id'];?>">
+                                                    <article class="course" tabindex="0" data-course="<?=$course['id'];?>" onkeyup="EnterClick(event)">
                                                         <div class="course-difficulty">
                                                             <?php
                                                                 switch($course['difficulty']) {
@@ -124,11 +124,11 @@
                             break;
                         case "myCourses":
                             ?>
-                            <div class="box-recommendation">
+                            <div class="box-recommendation" role="banner">
                                 <div class="recommendation-notification">Empfehlung für dich</div>
 
                                 <h1>HTML-Grundkurs</h1>
-                                <a href="courses.php?allCourses" class="button">Alle Kurse anzeigen</a>
+                                <a href="userarea.php?p=allCourses" class="button">Alle Kurse anzeigen</a>
                             </div>
 
                             <!-- <div class="box box-userarea">
@@ -152,7 +152,7 @@
                                     $course = $course[0];
 
                                     ?>
-                                    <article class="course" tabindex="0" data-course="<?=$course['id'];?>">
+                                    <article class="course" tabindex="0" data-course="<?=$course['id'];?>" onkeyup="EnterClick(event)">
                                         <div class="course-difficulty">
                                             <?php
                                             switch($course['difficulty']) {
@@ -210,7 +210,7 @@
                 <a href="impressum.php">Impressum & Datenschutz</a>
             </footer>
 
-            <div class="modal-details">
+            <div class="modal-details" role="dialog" aria-labelledby="modalHolderTitle" aria-describedby="modalHolderShortDescription">
                 <div class="grid-wrapper modal-details-content">
 
                     <article class="course-details">
@@ -231,35 +231,24 @@
                     <div class="course-moredetails">
                         <div class="box">
                             <h3>Kursinformationen</h3>
-                            <p id="modalHolderLongDescription">In diesem Kurs lernst du die Grundlagen von XML und wie man XML in die <br/>Datenwiedergabe einbinden kann, um Arbeitsabläufe zu optimieren.</p>
+                            <p id="modalHolderLongDescription"></p>
                             <h3>Informationen zur Schulungsstätte</h3>
                             <p>IT-Dschungel<br />Entwicklungsgasse 10<br />45123 Gelsenkirchen<br /><br />Telefon: 0209-222222<br />E-Mail: info@it-dschungel.de<br />Web: www.it-dschungel.de</p>
                         </div>
                         <div class="box box-coursedates">
                             <h3>Termine</h3>
                             <div class="course-dates interactable" id="modalHolderDates">
-                                <div class="course-date active">
-                                    <span>Sa</span>
-                                    <span>01.03.2019</span>
-                                </div>
-                                <div class="course-date">
-                                    <span>Sa</span>
-                                    <span>01.03.2019</span>
-                                </div>
-                                <div class="course-date">
-                                    <span>Sa</span>
-                                    <span>01.03.2019</span>
-                                </div>
                             </div>
 
                             <h3>Für diesen Kurs voranmelden</h3>
                             <p class="notification">Klicke einen der Termine oben an, um dich für diesen Kurs vorzuanmelden.</p>
-                            <div class="button button-primary button-disabled" id="btnCourseConfirm">Kursanmeldung bestätigen</div>
+                            <div class="button button-primary button-disabled" id="btnCourseConfirm" tabindex="0" onkeyup="EnterClick(event)">Kursanmeldung bestätigen</div>
                         </div>
                     </div>
                 </div>
             </div>
 
             <script src="assets/js/course-detail.js"></script>
+            <script src="assets/js/enter-click.js"></script>
         </body>
     </html>

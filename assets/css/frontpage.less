@@ -47,9 +47,11 @@ section.jumbotron {
       margin-top: 15px;
       transition: 0.2s ease all;
 
-      &:hover {
+      &:hover, &:focus {
         padding: 10px 35px;
         letter-spacing: 0.15em;
+        background: @colorPrimary;
+        color: @colorPrimaryText;
       }
       &:active {
         padding: 10px 25px;

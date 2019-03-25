@@ -26,12 +26,12 @@
                 <header>
                     <img src="assets/img/logo_rgb.svg" alt="it{dschungel} Logo" />
 
-                    <a href="index.php" class="button">Zurück</a>
+                    <a href="index.php" role="doc-backlink" class="button">Zurück</a>
                 </header>
 
-                <img src="assets/img/illustration_developer.svg" class="illustration" alt="Illustration eines Mannes an einem Computer" />
+                <img src="assets/img/illustration_developer.svg" role="presentation" class="illustration" alt="Illustration eines Mannes an einem Computer" />
             </aside>
-            <main>
+            <main role="main">
                 <form action="" method="POST">
                     <h1>Logg dich in deine it{id} ein.</h1>
 
@@ -57,5 +57,7 @@
                     <div class="new-account-notice">Du hast noch keinen Account? <a href="register.php">Erstelle dir einen!</a></div>
                 </form>
             </main>
+
+            <script src="assets/js/enter-click.js"></script>
         </body>
     </html>

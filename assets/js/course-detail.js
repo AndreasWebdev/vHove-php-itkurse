@@ -102,6 +102,10 @@ function constructModal(courseData) {
         modalConfirmButton.addEventListener('click', function() {
             submitDateCancellation(bookedID);
         });
+        modalConfirmButton.tabIndex = 0;
+        modalConfirmButton.addEventListener('keyup', function(event) {
+            EnterClick(event);
+        });
 
         // Reset containers
         modalHolderDates.classList.remove("interactable");
@@ -127,6 +131,10 @@ function loadCourseDate(holderContainer, data, isAlreadyBooked, isBookedItem) {
     newCourseDate.classList.add("course-date");
     newCourseDate.setAttribute("data-course", data.course);
     newCourseDate.setAttribute("data-date", data.id);
+    newCourseDate.tabIndex = 0;
+    newCourseDate.addEventListener('keyup', function(event) {
+        EnterClick(event);
+    });
 
     let dayOfWeek = "";
     switch(courseDate.getDay()) {
@@ -257,3 +265,10 @@ function submitDateSelection() {
             console.log(apiResponse);
         });
 }
+
+// Close with ESC key
+document.addEventListener('keyup', function(event) {
+    if(event.key === "Escape" || event.key === "Esc") {
+        closeModal();
+    }
+});

@@ -55,7 +55,6 @@ main form .input-field label {
   top: -5px;
   color: #909090;
   background: #fff;
-  transition: 0.2s ease top;
 }
 main form .input-field input {
   width: 100%;

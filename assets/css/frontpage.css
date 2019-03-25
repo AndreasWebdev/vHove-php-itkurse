@@ -43,9 +43,12 @@ section.jumbotron .jumbo-content .jumbo-button {
   margin-top: 15px;
   transition: 0.2s ease all;
 }
-section.jumbotron .jumbo-content .jumbo-button:hover {
+section.jumbotron .jumbo-content .jumbo-button:hover,
+section.jumbotron .jumbo-content .jumbo-button:focus {
   padding: 10px 35px;
   letter-spacing: 0.15em;
+  background: #5073f5;
+  color: #fff;
 }
 section.jumbotron .jumbo-content .jumbo-button:active {
   padding: 10px 25px;
