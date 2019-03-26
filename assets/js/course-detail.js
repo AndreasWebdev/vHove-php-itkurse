@@ -95,7 +95,7 @@ function constructModal(courseData) {
     } else {
         // there is already a booking, disable interaction and show "remove booking" option
         let bookedID = courseData.data.booking.id;
-        let bookedCourseID = courseData.data.booking.course;
+        let bookedCourseDateID = courseData.data.booking.course_date;
 
         modalConfirmButton.classList.remove("button-disabled");
         modalConfirmButton.innerText = "Kursanmeldung abbrechen";
@@ -114,7 +114,7 @@ function constructModal(courseData) {
 
         // Load each date
         courseData.data.dates.forEach(function(data) {
-            if(data.id === bookedCourseID) {
+            if(data.id === bookedCourseDateID) {
                 loadCourseDate(modalHolderDates, data, true, true);
             } else {
                 loadCourseDate(modalHolderDates, data, true, false);
