@@ -139,25 +139,25 @@ function loadCourseDate(holderContainer, data, isAlreadyBooked, isBookedItem) {
     let dayOfWeek = "";
     switch(courseDate.getDay()) {
         case 0:
-            dayOfWeek = "Mo";
+            dayOfWeek = "So";
             break;
         case 1:
-            dayOfWeek = "Di";
+            dayOfWeek = "Mo";
             break;
         case 2:
-            dayOfWeek = "Mi";
+            dayOfWeek = "Di";
             break;
         case 3:
-            dayOfWeek = "Do";
+            dayOfWeek = "Mi";
             break;
         case 4:
-            dayOfWeek = "Fr";
+            dayOfWeek = "Do";
             break;
         case 5:
-            dayOfWeek = "Sa";
+            dayOfWeek = "Fr";
             break;
         case 6:
-            dayOfWeek = "So";
+            dayOfWeek = "Sa";
             break;
     }
     let newCourseDateSpan1 = document.createElement("span");
