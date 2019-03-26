@@ -308,11 +308,11 @@
 
                                             <div class="input-field">
                                                 <label>Vorname</label>
-                                                <input type="text" name="change_forename" value="<?=getUserData($_SESSION['itd_userid'], "forename")?>" />
+                                                <input type="text" name="change_forename" required value="<?=getUserData($_SESSION['itd_userid'], "forename")?>" />
                                             </div>
                                             <div class="input-field">
                                                 <label>Nachname</label>
-                                                <input type="text" name="change_lastname" value="<?=getUserData($_SESSION['itd_userid'], "lastname")?>" />
+                                                <input type="text" name="change_lastname" required value="<?=getUserData($_SESSION['itd_userid'], "lastname")?>" />
                                             </div>
                                             <div class="input-field">
                                                 <label>Adresse</label>
@@ -330,7 +330,7 @@
                                             <br /><br />
                                             <div class="input-field">
                                                 <label>E-Mail Adresse</label>
-                                                <input type="email" name="change_email" value="<?=getUserData($_SESSION['itd_userid'], "email")?>" />
+                                                <input type="email" name="change_email" required value="<?=getUserData($_SESSION['itd_userid'], "email")?>" />
                                             </div>
                                             <div class="input-field">
                                                 <label>Aktuelles Passwort</label>
