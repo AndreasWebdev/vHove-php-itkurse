@@ -51,23 +51,23 @@
 
                     <div class="input-field">
                         <label>Deine E-Mail</label>
-                        <input type="email" name="register_email" />
+                        <input type="email" name="register_email" required />
                     </div>
                     <div class="input-field">
                         <label>Vorname</label>
-                        <input type="text" name="register_forename" />
+                        <input type="text" name="register_forename" required />
                     </div>
                     <div class="input-field">
                         <label>Nachname</label>
-                        <input type="text" name="register_lastname" />
+                        <input type="text" name="register_lastname" required />
                     </div>
                     <div class="input-field">
                         <label>Benutzername</label>
-                        <input type="text" name="register_username" />
+                        <input type="text" name="register_username" required/>
                     </div>
                     <div class="input-field">
                         <label>Passwort</label>
-                        <input type="password" name="register_password" />
+                        <input type="password" name="register_password" required />
                     </div>
                     <input type="submit" name="register_submit" class="button button-primary" value="Registrieren" />
                     <div class="new-account-notice">Du hast bereits einen Account? <a href="login.php">Logg dich ein!</a></div>

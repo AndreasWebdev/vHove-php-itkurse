@@ -49,11 +49,11 @@
 
                     <div class="input-field">
                         <label>Benutzername</label>
-                        <input type="text" name="login_username" />
+                        <input type="text" name="login_username" required />
                     </div>
                     <div class="input-field">
                         <label>Passwort</label>
-                        <input type="password" name="login_password" />
+                        <input type="password" name="login_password" required />
                     </div>
                     <input type="submit" name="login_submit" class="button button-primary" value="Einloggen" />
                     <div class="new-account-notice">Du hast noch keinen Account? <a href="register.php">Erstelle dir einen!</a></div>
