@@ -1,15 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.0
+-- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Erstellungszeit: 26. Mrz 2019 um 16:50
--- Server-Version: 10.1.25-MariaDB
--- PHP-Version: 5.6.31
+-- Host: localhost:8889
+-- Erstellungszeit: 26. Mrz 2019 um 21:36
+-- Server-Version: 5.7.23
+-- PHP-Version: 7.2.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -34,6 +32,14 @@ CREATE TABLE `bookedcourse` (
   `course` int(11) NOT NULL,
   `course_date` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Daten für Tabelle `bookedcourse`
+--
+
+INSERT INTO `bookedcourse` (`id`, `user`, `course`, `course_date`) VALUES
+(22, 1, 4, 11),
+(23, 1, 6, 15);
 
 -- --------------------------------------------------------
 
@@ -105,8 +111,8 @@ INSERT INTO `coursedate` (`id`, `course_date`, `course`) VALUES
 (6, '2019-04-28', 1),
 (7, '2019-05-11', 2),
 (8, '2019-05-12', 2),
-(9, '2019-05-24', 3),
-(10, '2019-05-25', 3),
+(9, '2019-05-25', 3),
+(10, '2019-05-26', 3),
 (11, '2019-06-01', 4),
 (12, '2019-06-02', 4),
 (13, '2019-06-15', 5),
@@ -144,8 +150,9 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `username`, `password`, `email`, `forename`, `lastname`, `adress`, `zip`, `city`, `security_key`) VALUES
-(1, 'ahe', '559e642972ad12ff5b16cd71f1e2b50aa95a522c', 'privat@andreas-heimann.com', 'Max', 'Heimann', 'Kranichstraße 22', 46282, 'Dorsten', '5c9a48386bbdf'),
-(2, 'hansi', 'franz', 'tolle@email.de', 'Hans', 'Franz', NULL, NULL, NULL, '5c6d436e95c66');
+(1, 'ahe', '559e642972ad12ff5b16cd71f1e2b50aa95a522c', 'privat@andreas-heimann.com', 'Felix', 'Heimann', 'Kranichstraße 22', 46282, 'Dorsten', '5c9a9992ccaba'),
+(2, 'hansi', 'franz', 'tolle@email.de', 'Hans', 'Franz', NULL, NULL, NULL, '5c6d436e95c66'),
+(3, 'andi1234', '9c789101240d97a588e628c1dcd16b3a914765a1', 'andreas@it-dschungel.de', 'Andreas', 'Heimann', NULL, NULL, NULL, '5c9a9989b1b1c');
 
 --
 -- Indizes der exportierten Tabellen
@@ -194,27 +201,32 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT für Tabelle `bookedcourse`
 --
 ALTER TABLE `bookedcourse`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+
 --
 -- AUTO_INCREMENT für Tabelle `course`
 --
 ALTER TABLE `course`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
 --
 -- AUTO_INCREMENT für Tabelle `coursecategory`
 --
 ALTER TABLE `coursecategory`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
 --
 -- AUTO_INCREMENT für Tabelle `coursedate`
 --
 ALTER TABLE `coursedate`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+
 --
 -- AUTO_INCREMENT für Tabelle `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
 --
 -- Constraints der exportierten Tabellen
 --
@@ -238,7 +250,6 @@ ALTER TABLE `course`
 --
 ALTER TABLE `coursedate`
   ADD CONSTRAINT `fk_coursedate__course` FOREIGN KEY (`course`) REFERENCES `course` (`id`) ON DELETE CASCADE;
-COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
