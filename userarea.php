@@ -30,7 +30,7 @@
                     <a href="userarea.php?p=myCourses" tabindex="-1"><img src="assets/img/logo_white.svg" class="logo" alt="it-{dschungel} Logo" /></a>
 
                     <nav class="user-area" role="navigation">
-                        <a href="logout.php" class="button"><i class="mdi mdi-logout-variant"></i> Ausloggen</a>
+                        <a href="logout.php" class="button" role="menuitem"><i class="mdi mdi-logout-variant"></i> Ausloggen</a>
                     </nav>
 
                     <nav class="tabs" role="navigation">
@@ -360,7 +360,7 @@
                 <div class="grid-wrapper modal-details-content">
 
                     <article class="course-details">
-                        <a href="javascript:closeModal();" class="button button-primary"><i class="mdi mdi-close mdi-icononly"></i></a>
+                        <a href="javascript:closeModal();" class="button button-primary" aria-label="Schließen"><i class="mdi mdi-close mdi-icononly"></i></a>
                         <div class="course-difficulty" id="modalHolderDifficulty">
                             <span class="icons">
                                 <i class="mdi mdi-star"></i>

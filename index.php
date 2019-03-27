@@ -28,13 +28,13 @@
                         <?php
                             if(isLoggedIn()) {
                                 ?>
-                                    <a href="userarea.php?p=myCourses" class="button button-transparent text-white">ZUM KURSBEREICH</a>
-                                    <a href="logout.php" class="button">AUSLOGGEN</a>
+                                    <a href="userarea.php?p=myCourses" class="button button-transparent text-white" role="menuitem">ZUM KURSBEREICH</a>
+                                    <a href="logout.php" class="button" role="menuitem">AUSLOGGEN</a>
                                 <?php
                             } else {
                                 ?>
-                                    <a href="login.php" class="button button-transparent text-white"><i class="mdi mdi-login-variant"></i> EINLOGGEN</a>
-                                    <a href="register.php" class="button"><i class="mdi mdi-account-plus"></i> REGISTRIEREN</a>
+                                    <a href="login.php" class="button button-transparent text-white" role="menuitem"><i class="mdi mdi-login-variant"></i> EINLOGGEN</a>
+                                    <a href="register.php" class="button" role="menuitem"><i class="mdi mdi-account-plus"></i> REGISTRIEREN</a>
                                 <?php
                             }
                         ?>
